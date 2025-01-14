@@ -42,6 +42,16 @@ const llenaLista = async () => {
 
 llenaLista()
 
+// Validamos que el numero sea positivo siempre
+monto.addEventListener('change' , () => {
+    if (monto.value <= 0)
+    {
+        alert('Debe ingresar un monto mayor a 0.')
+        monto.value = '' 
+    }
+})
+
+
 // Obtenemos datos de la moneda seleccionada de la lista y que pasa como parametro
 const datosMoneda = async (moneda) => {
     try 
@@ -84,7 +94,7 @@ const datosFechaMoneda = async (moneda) => {
     {   
         const valores = await datosMoneda(moneda)
 
-        const datosParaMostrar = valores.serie.slice(0,10);
+        const datosParaMostrar = valores.serie.slice(0,10).reverse();
 
         const labels = datosParaMostrar.map((objeto) => 
         {
